@@ -14,6 +14,22 @@ export default function Textform(props) {
         let newText = text.toLocaleLowerCase();
         setText(newText);
     }
+
+    const clearfunc =()=>{
+        // console.log("Uppercase was clicked"); // console pr show hoga yeh
+            //    props.settext(props.text.toUpperCase());
+        let newText = '';
+        setText(newText);
+    }
+
+    const speakfunc =()=>{
+        // console.log("Uppercase was clicked"); // console pr show hoga yeh
+            //    props.settext(props.text.toUpperCase());
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+        setText(newText);
+    }
     const upchange =(event)=>{
         // console.log("Onchange"); // not necessary only for understand 
         setText(event.target.value);
@@ -37,6 +53,8 @@ export default function Textform(props) {
 
             <button type="submit" className="btn btn-primary mx-2" onClick={upfunc}>Convert To Uppercase</button>
             <button type="submit" className="btn btn-primary mx-2" onClick={lofunc}>Convert To Lowercase</button>
+            <button type="submit" className="btn btn-primary mx-2" onClick={clearfunc}>Tap to Clear</button>
+            <button type="submit" className="btn btn-primary mx-2" onClick={speakfunc}>Tap to Speak </button>
         </div>
 
         <div className="container my-2">
