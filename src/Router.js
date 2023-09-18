@@ -4,6 +4,13 @@ import Textform from './Components/Textform';
 import About from './Components/About';
 import Alert from './Components/Alert';
 import React ,{ useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 
 function App() {
@@ -50,8 +57,9 @@ function App() {
 
   return (
     <>
+      <Router>
         {/* I can use this Navbar again and again , cause this is compenents */}
-        <Navbar title = "U2L Converter" abouttext = "About" mode = {mode} toogle = {toogle}/>
+              <Navbar title = "U2L Converter" abouttext = "About" mode = {mode} toogle = {toogle}/>
 
         {/* Alert section  */}
         <Alert alert = {alert}/>
@@ -59,14 +67,27 @@ function App() {
 
         {/* Here i added form making through bootstrap */}
         <div className="container my-3">
-  
-            <Textform heading = "Enter The Text To Analyze." showalert = {showalert} mode = {mode}/> 
+            <Switch>
+                <Route exact path="/">
+                  <Textform heading = "Enter The Text To Analyze." showalert = {showalert} mode = {mode}/>
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+              
+                
+            </Switch>
+            
         </div>
 
         {/* <Navbar/>  ---> yeh hai default balle ke liye */}  
         {/* <Check/> */}
+      </Router>
     </>
   );
 }
 
 export default App;
+
+
+// Yeh router balli website hai isko khud se deploy krke dekh lena , isme router ka dikkat aata hai with git hub pages isley thats why we use gh-pages build by npm .
