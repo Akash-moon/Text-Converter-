@@ -36,7 +36,7 @@ export default function About() {
 
   return (
     // style ek object lega  
-    <div classNameName="container" style = {mystyle}> 
+    <div className="container" style = {mystyle}> 
         <h1>About Us</h1>
         <div className="accordion" id="accordionExample" style = {mystyle}>
             <div className="accordion-item">
@@ -77,7 +77,7 @@ export default function About() {
             </div>
         </div>
 
-        <div classNameName="container my-3">
+        <div className="container my-3">
             <button type="button" onClick={tooglecolor} className="btn btn-primary mx-3 my-2">{btntext}</button>
         </div>
     </div>

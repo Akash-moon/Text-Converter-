@@ -7,12 +7,14 @@ export default function Textform(props) {
             //    props.settext(props.text.toUpperCase());
         let newText = text.toUpperCase();
         setText(newText);
+        props.showalert("Successfully Changes to uppercase","success");
     }
     const lofunc =()=>{
         // console.log("Uppercase was clicked"); // console pr show hoga yeh
             //    props.settext(props.text.toUpperCase());
         let newText = text.toLocaleLowerCase();
         setText(newText);
+        props.showalert("Successfully Changes to lowercase","success");
     }
 
     const clearfunc =()=>{
@@ -20,6 +22,7 @@ export default function Textform(props) {
             //    props.settext(props.text.toUpperCase());
         let newText = '';
         setText(newText);
+        props.showalert("Successfully Cleared the text","success");
     }
 
     const speakfunc =()=>{
@@ -42,12 +45,12 @@ export default function Textform(props) {
   return (
     <form>
         <>
-        <div className="container">
+        <div className="container" style = {{color : props.mode === 'light' ? '#042b55' : 'white'} }>
             <h2>{props.heading}</h2>
 
             <div className="mb-3">
                 {/* I need only one box thats why i remove all things  */}
-                <textarea className="form-control" id="myBox" onChange={upchange} value={text} cols="30" rows="10"></textarea>
+                <textarea className="form-control" id="myBox" onChange={upchange} value={text} style= {{backgroundColor : props.mode === 'light' ? 'white' : '#042b55',color:props.mode === 'light' ? '#110bba' : 'white'}} cols="25" rows="10"></textarea>
                 {/* by default value aa jaegii text ki */} 
             </div>
 
@@ -57,7 +60,7 @@ export default function Textform(props) {
             <button type="submit" className="btn btn-primary mx-2" onClick={speakfunc}>Tap to Speak </button>
         </div>
 
-        <div className="container my-2">
+        <div className="container my-2" style = {{color : props.mode === 'light' ? '#042b55' : 'white'} }>
             <h2>Your Text has</h2>
             <p><b>{text.split(" ").length}</b> words and <b>{text.length}</b> character</p>
             <p><b>{0.008 * text.split(" ").length}</b> Min Read</p>
