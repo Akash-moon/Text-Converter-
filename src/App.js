@@ -11,7 +11,7 @@ function App() {
   const [alert,setAlert] = useState(null);// this is state for the elert
 
   const showalert = (msg,type)=>{
-    // 4 type ke alert hote hain go to watch on bootstrap
+    // 4 type key alert hote hain go to watch on bootstrap
     setAlert({
       msg : msg,
       type: type
@@ -51,7 +51,7 @@ function App() {
   return (
     <>
         {/* I can use this Navbar again and again , cause this is compenents */}
-        <Navbar title = "U2L Converter" abouttext = "About" mode = {mode} toogle = {toogle}/>
+        <Navbar title = "Text Manipulator" abouttext = "About" mode = {mode} toogle = {toogle}/>
 
         {/* Alert section  */}
         <Alert alert = {alert}/>
@@ -59,7 +59,6 @@ function App() {
 
         {/* Here i added form making through bootstrap */}
         <div className="container my-3">
-  
             <Textform heading = "Enter The Text To Analyze." showalert = {showalert} mode = {mode}/> 
         </div>
 

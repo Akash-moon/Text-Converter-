@@ -31,7 +31,7 @@ export default function Textform(props) {
         let msg = new SpeechSynthesisUtterance();
         msg.text = text;
         window.speechSynthesis.speak(msg);
-        setText(newText);
+        // setText(newText);
     }
     const upchange =(event)=>{
         // console.log("Onchange"); // not necessary only for understand 
@@ -54,16 +54,17 @@ export default function Textform(props) {
                 {/* by default value aa jaegii text ki */} 
             </div>
 
-            <button type="submit" className="btn btn-primary mx-2" onClick={upfunc}>Convert To Uppercase</button>
-            <button type="submit" className="btn btn-primary mx-2" onClick={lofunc}>Convert To Lowercase</button>
-            <button type="submit" className="btn btn-primary mx-2" onClick={clearfunc}>Tap to Clear</button>
-            <button type="submit" className="btn btn-primary mx-2" onClick={speakfunc}>Tap to Speak </button>
+            <button disabled={text.length === 0} type="submit" className="btn btn-primary mx-2 my-2" onClick={upfunc}>Convert To Uppercase</button>
+            <button disabled={text.length === 0} type="submit" className="btn btn-primary mx-2 my-2" onClick={lofunc}>Convert To Lowercase</button>
+            <button disabled={text.length === 0} type="submit" className="btn btn-primary mx-2 my-2" onClick={clearfunc}>Tap to Clear</button>
+            <button disabled={text.length === 0} type="submit" className="btn btn-primary mx-2 my-2" onClick={speakfunc}>Tap to Speak </button>
         </div>
 
         <div className="container my-2" style = {{color : props.mode === 'light' ? '#042b55' : 'white'} }>
             <h2>Your Text has</h2>
-            <p><b>{text.split(" ").length}</b> words and <b>{text.length}</b> character</p>
-            <p><b>{0.008 * text.split(" ").length}</b> Min Read</p>
+            <p><b>{text.split(/\s+/).filter((x)=>{return x.length !== 0}).length}</b> words and <b>{text.length}</b> character</p>
+            {/* (/\s+/) ---> yeh regex hai \s = means white space + next line  */}
+            <p><b>{0.008 * text.split(" ").filter((x)=>{return x.length !== 0}).length}</b> Min Read</p>
 
             <h2>Preview</h2>
             <p><i>{text}</i></p>
